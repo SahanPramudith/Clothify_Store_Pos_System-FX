@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.Dashboard"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="603.0" prefWidth="1118.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Dashboard">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#373534" height="122.0" stroke="BLACK" strokeType="INSIDE" width="1118.0" />
+      <Button layoutX="14.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Button" textAlignment="JUSTIFY" />
+      <ImageView fitHeight="63.0" fitWidth="54.0" layoutX="14.0" layoutY="42.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assert/Shopping%20Cart.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="171.0" layoutY="35.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Button" textAlignment="JUSTIFY" />
+      <Button layoutX="327.0" layoutY="35.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Button" textAlignment="JUSTIFY" />
+      <Button layoutX="642.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Button" textAlignment="JUSTIFY" />
+      <Button layoutX="485.0" layoutY="35.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Button" textAlignment="JUSTIFY" />
+      <Button layoutX="960.0" layoutY="35.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Button" textAlignment="JUSTIFY" />
+      <Button layoutX="801.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Button" textAlignment="JUSTIFY" />
+      <ImageView fitHeight="487.0" fitWidth="1118.0" layoutY="122.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assert/201576392-fast-fashion-store-with-shelves-full-of-clothing-in-various-styles-and-colors-created-with.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="lbldate" arcHeight="50.0" arcWidth="50.0" fill="#101010" height="66.0" layoutX="14.0" layoutY="140.0" stroke="BLACK" strokeType="INSIDE" width="349.0" />
+      <Separator layoutX="168.0" layoutY="148.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />
+      <Label layoutX="41.0" layoutY="154.0" prefHeight="38.0" prefWidth="75.0" text="date" textFill="#f7f4f4" />
+      <Label fx:id="lbltieme" layoutX="205.0" layoutY="146.0" prefHeight="50.0" prefWidth="124.0" text="tiem" textFill="#f7f4f4" />
+   </children>
 </AnchorPane>
