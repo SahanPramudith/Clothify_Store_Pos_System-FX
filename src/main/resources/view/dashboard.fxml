@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="603.0" prefWidth="1118.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Dashboard">
    <children>
@@ -29,9 +29,15 @@
             <Image url="@../assert/201576392-fast-fashion-store-with-shelves-full-of-clothing-in-various-styles-and-colors-created-with.jpg" />
          </image>
       </ImageView>
-      <Rectangle fx:id="lbldate" arcHeight="50.0" arcWidth="50.0" fill="#101010" height="66.0" layoutX="14.0" layoutY="140.0" stroke="BLACK" strokeType="INSIDE" width="349.0" />
-      <Separator layoutX="168.0" layoutY="148.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />
-      <Label layoutX="41.0" layoutY="154.0" prefHeight="38.0" prefWidth="75.0" text="date" textFill="#f7f4f4" />
-      <Label fx:id="lbltieme" layoutX="205.0" layoutY="146.0" prefHeight="50.0" prefWidth="124.0" text="tiem" textFill="#f7f4f4" />
+      <Rectangle fx:id="" arcHeight="50.0" arcWidth="50.0" fill="#101010" height="66.0" layoutX="14.0" layoutY="140.0" stroke="BLACK" strokeType="INSIDE" width="411.0" />
+      <Separator layoutX="201.0" layoutY="148.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />
+      <Label fx:id="lbldate" layoutX="41.0" layoutY="154.0" prefHeight="38.0" prefWidth="157.0" text="date" textFill="#f7f4f4">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font></Label>
+      <Label fx:id="lbltieme" layoutX="246.0" layoutY="148.0" prefHeight="50.0" prefWidth="124.0" text="tiem" textFill="#f7f4f4">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
    </children>
 </AnchorPane>
