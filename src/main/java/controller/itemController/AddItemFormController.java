@@ -2,6 +2,8 @@ package controller.itemController;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import db.DbConnection;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +21,10 @@ import model.Item;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.EventObject;
 import java.util.ResourceBundle;
 
@@ -86,6 +92,7 @@ public class AddItemFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         reloard();
+        id();
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
         colItemName.setCellValueFactory(new PropertyValueFactory<>("itemname"));
         colSupplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
@@ -100,6 +107,15 @@ public class AddItemFormController implements Initializable {
                 addValueTotext(newval);
             }
         });
+
+        ObservableList<String> catagory = FXCollections.observableArrayList();
+        catagory.add("Ladies");
+        catagory.add("Gents");
+        catagory.add("Kids");
+
+
+
+        lblcategorie.setItems(catagory);
     }
 
     private void addValueTotext(Item newval) {
@@ -132,6 +148,7 @@ public class AddItemFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION,"Done").show();
             reloard();
             clear();
+            id();
         }
     }
 
@@ -194,6 +211,34 @@ public class AddItemFormController implements Initializable {
         lblSellingPrice.clear();
         lblSize.clear();
         lblcategorie.setValue(null);
+    }
+
+    private String getlatesitemid() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT itemCode FROM item ORDER BY itemCode DESC LIMIT 1");
+        String itemCode = resultSet.next() ? resultSet.getString("ItemCode") : null;
+        System.out.println("Fetched Item Code from DB: " + itemCode); // Print the fetched item code
+        return itemCode;
+    }
+
+    private void id(){
+        try {
+            String getlatesitemid = getlatesitemid();  // Get the latest item ID from the DB
+
+            if (getlatesitemid != null && getlatesitemid.matches("i-\\d{4}")) {
+                // Extract the numeric part and increment it
+                int numericPart = Integer.parseInt(getlatesitemid.substring(2)) + 1;  // Get the number after 'P-'
+                String newItemId = String.format("i-%04d", numericPart);  // Format with leading zeros
+                lblItemCode.setText(newItemId);
+            } else {
+                // If no valid itemCode exists, start from P-0001
+                new Alert(Alert.AlertType.ERROR,"pleace enter valid id").show();
+                lblItemCode.setText("i-0001");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);  // Handle SQL exceptions
+        }
     }
 
 
