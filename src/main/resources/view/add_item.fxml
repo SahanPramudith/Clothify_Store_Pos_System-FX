@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="615.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddItemFormController">
+   <children>
+      <ImageView fitHeight="687.0" fitWidth="864.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assert/201576392-fast-fashion-store-with-shelves-full-of-clothing-in-various-styles-and-colors-created-with.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="150.0" arcWidth="100.0" fill="#212326" height="528.0" layoutX="24.0" layoutY="141.0" opacity="0.63" stroke="BLACK" strokeType="INSIDE" width="816.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e4e4" height="32.0" layoutX="262.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="258.0" />
+      <Text fill="#130303" layoutX="313.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Items">
+         <font>
+            <Font name="Bell MT Bold" size="29.0" />
+         </font>
+      </Text>
+      <Label graphicTextGap="5.0" layoutX="73.0" layoutY="172.0" prefHeight="26.0" prefWidth="116.0" text="Item Code : " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Label>
+      <JFXTextField fx:id="lblItemCode" layoutX="195.0" layoutY="169.0" prefHeight="32.0" prefWidth="206.0" style="-fx-background-color: #FBF4EF;" unFocusColor="#6fc461">
+         <font>
+            <Font name="System Bold" size="14.399999618530273" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="77.0" layoutY="214.0" prefHeight="26.0" prefWidth="104.0" text="supplier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="lblSupplierName" layoutX="298.0" layoutY="211.0" prefHeight="32.0" prefWidth="94.0" promptText="Name" style="-fx-background-color: #FBF4EF;" unFocusColor="#6fc461" />
+      <JFXComboBox fx:id="cmdSupplierId" focusColor="#224bc9" labelFloat="true" layoutX="194.0" layoutY="211.0" prefHeight="32.0" prefWidth="94.0" promptText="suppliercode" style="-fx-background-color: #373534;" unFocusColor="#2c9c71" />
+      <JFXTextField fx:id="lblItemName" layoutX="195.0" layoutY="266.0" prefHeight="32.0" prefWidth="205.0" style="-fx-background-color: #FBF4EF;" unFocusColor="#6fc461" />
+      <Label layoutX="79.0" layoutY="266.0" prefHeight="26.0" prefWidth="104.0" text="Item Name" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="312.0" prefHeight="26.0" prefWidth="104.0" text="Qty" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="lblQty" layoutX="195.0" layoutY="312.0" prefHeight="32.0" prefWidth="206.0" style="-fx-background-color: #FBF4EF;" unFocusColor="#6fc461" />
+      <Label layoutX="74.0" layoutY="356.0" prefHeight="26.0" prefWidth="104.0" text="Bynig Price" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="lblBynigPrice" layoutX="194.0" layoutY="358.0" prefHeight="32.0" prefWidth="206.0" style="-fx-background-color: #FBF4EF;" unFocusColor="#6fc461" />
+      <Label graphicTextGap="5.0" layoutX="459.0" layoutY="172.0" prefHeight="26.0" prefWidth="116.0" text="Selling Price" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="lblSellingPrice" layoutX="585.0" layoutY="169.0" prefHeight="32.0" prefWidth="206.0" style="-fx-background-color: #FBF4EF;" unFocusColor="#6fc461" />
+      <Label graphicTextGap="5.0" layoutX="459.0" layoutY="218.0" prefHeight="26.0" prefWidth="116.0" text="Size" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="lblSize" layoutX="585.0" layoutY="213.0" prefHeight="32.0" prefWidth="206.0" style="-fx-background-color: #FBF4EF;" unFocusColor="#6fc461" />
+      <Label graphicTextGap="5.0" layoutX="459.0" layoutY="264.0" prefHeight="32.0" prefWidth="104.0" text="categorie" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="lblcategorie" focusColor="#224bc9" labelFloat="true" layoutX="585.0" layoutY="262.0" prefHeight="32.0" prefWidth="206.0" promptText="category" style="-fx-background-color: #FBF4EF;" unFocusColor="#2c9c71" />
+      <JFXButton layoutX="468.0" layoutY="328.0" onAction="#btnAddOnAction" prefHeight="32.0" prefWidth="86.0" ripplerFill="#23c486" style="-fx-background-color: #0B9E53;" text="Add" textFill="#f4eded" />
+      <JFXButton layoutX="575.0" layoutY="328.0" onAction="#btnClearOnAction" prefHeight="32.0" prefWidth="86.0" ripplerFill="#0d714a" style="-fx-background-color: #DE1717;" text="Clear" textFill="#f2eaea" />
+      <JFXButton layoutX="677.0" layoutY="327.0" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="86.0" ripplerFill="#0d714a" style="-fx-background-color: #DEC317;" text="Update" textFill="#f2eaea" />
+      <TableView fx:id="tblItem" layoutX="62.0" layoutY="425.0" prefHeight="200.0" prefWidth="753.0">
+        <columns>
+          <TableColumn fx:id="colItemCode" prefWidth="89.60000610351562" text="Item Code" />
+          <TableColumn fx:id="colSupplier" prefWidth="100.79998779296875" text="Supplier" />
+            <TableColumn fx:id="colItemName" prefWidth="84.79998779296875" text="item Name" />
+            <TableColumn fx:id="colQty" prefWidth="77.60003662109375" text="Qty" />
+            <TableColumn fx:id="colBynigPrice" minWidth="0.0" prefWidth="108.79998779296875" text="Bynig Price" />
+            <TableColumn fx:id="colSellingPrice" minWidth="2.4000244140625" prefWidth="106.4000244140625" text="Selling Price" />
+            <TableColumn fx:id="colSize" minWidth="7.20001220703125" prefWidth="87.199951171875" text="Size" />
+            <TableColumn fx:id="colcategorie" prefWidth="102.4000244140625" text="categorie" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="663.0" layoutY="38.0" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: #080807;" text="Back" textFill="#f7f2f2">
+         <font>
+            <Font name="System Bold Italic" size="14.399999618530273" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="NW_RESIZE" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="42.0" fitWidth="52.0" layoutX="663.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assert/Left.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
