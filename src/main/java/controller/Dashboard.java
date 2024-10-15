@@ -78,4 +78,17 @@ public class Dashboard implements Initializable {
 
     public void btnSupplierOnAction(ActionEvent actionEvent) {
     }
+
+    public void btnBackOnAction(ActionEvent actionEvent) {
+        try {
+            parent = FXMLLoader.load(getClass().getResource("../view/login.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(parent);
+
+        stage.setScene(scene);
+        stage.show();
+    }
 }

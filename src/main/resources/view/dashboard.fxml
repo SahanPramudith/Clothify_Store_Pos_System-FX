@@ -73,5 +73,11 @@
         </yAxis>
       </AreaChart>
       <Text fill="#f4ecec" layoutX="541.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REPORTS" />
+      <Button layoutX="940.0" layoutY="140.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="50.0" prefWidth="150.0" text="Back" textAlignment="JUSTIFY" />
+      <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="951.0" layoutY="146.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assert/icons8-return-50.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
