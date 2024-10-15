@@ -130,6 +130,8 @@ public class AddItemFormController implements Initializable {
         System.out.println("items : "+item);
         if ( service.additem(item)){
             new Alert(Alert.AlertType.CONFIRMATION,"Done").show();
+            reloard();
+            clear();
         }
     }
 
@@ -181,6 +183,17 @@ public class AddItemFormController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void clear(){
+        lblItemCode.clear();
+        lblItemName.clear();
+        lblQty.clear();
+        lblSupplierName.clear();
+        lblBynigPrice.clear();
+        lblSellingPrice.clear();
+        lblSize.clear();
+        lblcategorie.setValue(null);
     }
 
 
