@@ -34,10 +34,7 @@ public class ItemController implements ItemService{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if (isAdd){
-            return true;
-        }
-        return false;
+        return isAdd;
     }
 
     @Override
@@ -62,10 +59,7 @@ public class ItemController implements ItemService{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if (isupdate){
-            return true;
-        }
-        return false;
+        return isupdate;
     }
 
     @Override
@@ -111,9 +105,6 @@ public class ItemController implements ItemService{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if (isdelete){
-            return  true ;
-        }
-        return false;
+        return isdelete;
     }
 }

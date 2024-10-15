@@ -60,17 +60,18 @@ public class Dashboard implements Initializable {
     }
 
     public void btnOdetOnAction(ActionEvent actionEvent) throws IOException {
-        parent= FXMLLoader.load(getClass().getResource("../view/add_item.fxml"));
-        stage= (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(parent);
-        stage.setScene(scene);
-        stage.show();
+
     }
 
     public void btnEmployeeOnAction(ActionEvent actionEvent) {
     }
 
-    public void btnItenOnAction(ActionEvent actionEvent) {
+    public void btnItenOnAction(ActionEvent actionEvent) throws IOException {
+        parent= FXMLLoader.load(getClass().getResource("../view/add_item.fxml"));
+        stage= (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void btnOrderDetailsnOnAction(ActionEvent actionEvent) {
