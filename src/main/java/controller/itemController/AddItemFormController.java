@@ -5,7 +5,9 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Item;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.EventObject;
 import java.util.ResourceBundle;
@@ -25,7 +28,6 @@ public class AddItemFormController implements Initializable {
     private Stage stage;
     private EventObject actionEvent;
     private Scene scene;
-
     @FXML
     private JFXComboBox<String> cmdSupplierId;
 
@@ -169,8 +171,18 @@ public class AddItemFormController implements Initializable {
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
+        try {
+            parent = FXMLLoader.load(getClass().getResource("../../view/dashboard.fxml"));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(parent);
 
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
 
 
