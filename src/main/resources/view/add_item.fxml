@@ -81,7 +81,7 @@
       </Label>
       <JFXComboBox fx:id="lblcategorie" focusColor="#224bc9" labelFloat="true" layoutX="585.0" layoutY="262.0" prefHeight="32.0" prefWidth="206.0" promptText="category" style="-fx-background-color: #FBF4EF;" unFocusColor="#2c9c71" />
       <JFXButton layoutX="468.0" layoutY="328.0" onAction="#btnAddOnAction" prefHeight="32.0" prefWidth="86.0" ripplerFill="#23c486" style="-fx-background-color: #0B9E53;" text="Add" textFill="#f4eded" />
-      <JFXButton layoutX="575.0" layoutY="328.0" onAction="#btnClearOnAction" prefHeight="32.0" prefWidth="86.0" ripplerFill="#0d714a" style="-fx-background-color: #DE1717;" text="Clear" textFill="#f2eaea" />
+      <JFXButton layoutX="575.0" layoutY="328.0" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="86.0" ripplerFill="#0d714a" style="-fx-background-color: #DE1717;" text="Delete" textFill="#f2eaea" />
       <JFXButton layoutX="677.0" layoutY="327.0" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="86.0" ripplerFill="#0d714a" style="-fx-background-color: #DEC317;" text="Update" textFill="#f2eaea" />
       <TableView fx:id="tblItem" layoutX="62.0" layoutY="425.0" prefHeight="200.0" prefWidth="753.0">
         <columns>

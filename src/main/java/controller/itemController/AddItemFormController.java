@@ -2,22 +2,24 @@ package controller.itemController;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Item;
 
-import java.io.IOException;
+import java.net.URL;
 import java.util.EventObject;
+import java.util.ResourceBundle;
 
-public class AddItemFormController {
+public class AddItemFormController implements Initializable {
 
     private Parent parent;
     private Stage stage;
@@ -76,10 +78,39 @@ public class AddItemFormController {
     private JFXComboBox<String> lblcategorie;
 
     @FXML
-    private TableView<?> tblItem;
+    private TableView<Item> tblItem;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        reloard();
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("itemname"));
+        colSupplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
+        colSize.setCellValueFactory(new PropertyValueFactory<>("size"));
+        colcategorie.setCellValueFactory(new PropertyValueFactory<>("categorie"));
+        colBynigPrice.setCellValueFactory(new PropertyValueFactory<>("bynigPrice"));
+        colSellingPrice.setCellValueFactory(new PropertyValueFactory<>("SellingPrice"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("Qty"));
+
+        tblItem.getSelectionModel().selectedItemProperty().addListener((observableValue, item, newval) -> {
+            if (newval!=null){
+                addValueTotext(newval);
+            }
+        });
+    }
+
+    private void addValueTotext(Item newval) {
+        lblItemCode.setText(newval.getItemcode());
+        lblSize.setText(newval.getSize());
+        lblQty.setText(String.valueOf(newval.getQty()));
+        lblSellingPrice.setText(""+newval.getSellingPrice());
+        lblBynigPrice.setText(""+newval.getBynigPrice());
+        lblItemName.setText(newval.getItemname());
+
+    }
 
     ItemService service=new ItemController();
-
     @FXML
     void btnAddOnAction(ActionEvent event) {
 
@@ -100,21 +131,42 @@ public class AddItemFormController {
         }
     }
 
-
-
-    @FXML
-    void btnClearOnAction(ActionEvent event) {
-
-    }
-
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        Item item = new Item(
+                lblItemCode.getText(),
+                cmdSupplierId.getValue(),
+                lblItemName.getText(),
+                lblSupplierName.getText(),
+                lblSize.getText(),
+                lblcategorie.getValue(),
+                Double.valueOf(lblBynigPrice.getText()),
+                Double.valueOf(lblSellingPrice.getText()),
+                Integer.valueOf(lblQty.getText())
+        );
+        System.out.println("items : "+item);
+        if ( service.update(item)){
+            new Alert(Alert.AlertType.CONFIRMATION,"Done").show();
+            reloard();
+        }
+    }
+
+    private void reloard(){
+
+        ObservableList<Item> allItem = service.getAllItem();
+        tblItem.setItems(allItem);
+        System.out.println("get All "+allItem);
 
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
 
     }
+
+    public void btnDeleteOnAction(ActionEvent actionEvent) {
+    }
+
+
 
 
 //    @FXML
