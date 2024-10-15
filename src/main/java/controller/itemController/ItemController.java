@@ -100,4 +100,20 @@ public class ItemController implements ItemService{
         }
         return getallitem;
     }
+
+    @Override
+    public boolean delete(String id) {
+
+        boolean isdelete;
+        try {
+            String sql="delete form item where ItemCode=?"+id;
+            isdelete = DbConnection.getInstance().getConnection().createStatement().executeUpdate("delete from item where ItemCode='" + id + "'") > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if (isdelete){
+            return  true ;
+        }
+        return false;
+    }
 }

@@ -159,11 +159,17 @@ public class AddItemFormController implements Initializable {
 
     }
 
-    public void btnBackOnAction(ActionEvent actionEvent) {
-
-    }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
+
+        if (service.delete(lblItemCode.getText())){
+            new Alert(Alert.AlertType.CONFIRMATION,"delte item").show();
+            reloard();
+        }
+    }
+
+    public void btnBackOnAction(ActionEvent actionEvent) {
+
     }
 
 
