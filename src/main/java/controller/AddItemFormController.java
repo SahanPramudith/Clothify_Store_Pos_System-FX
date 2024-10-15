@@ -28,7 +28,7 @@ public class AddItemFormController {
 
     public void btnBackOnAction(ActionEvent actionEvent) {
         try {
-            parent = FXMLLoader.load(getClass().getResource("../view/login.fxml"));
+            parent = FXMLLoader.load(getClass().getResource("../view/dashboard.fxml"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
