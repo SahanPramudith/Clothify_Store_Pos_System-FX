@@ -13,10 +13,14 @@ import java.sql.SQLException;
 
 public class SupplierController implements SupplierService{
 
+    private static SupplierController instance;
+    private SupplierController(){}
 
+    public static SupplierController getInstance() {
+        return instance==null?instance=new SupplierController():instance;
+    }
 
-
-//===================================================================================
+    //===================================================================================
     @Override
     public boolean addSupplier(Supplier supplier) {
 

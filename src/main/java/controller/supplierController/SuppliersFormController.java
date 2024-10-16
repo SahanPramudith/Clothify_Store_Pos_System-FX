@@ -99,7 +99,7 @@ public class SuppliersFormController implements Initializable {
     }
 
 
-    SupplierService service =new SupplierController();
+    SupplierService service =SupplierController.getInstance();
 
     @FXML
     void btnAddOnaction(ActionEvent event) {
