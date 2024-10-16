@@ -1,11 +1,14 @@
 package controller.supplierController;
 
 import db.DbConnection;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import model.Item;
 import model.Supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SupplierController implements SupplierService{
@@ -42,7 +45,32 @@ public class SupplierController implements SupplierService{
 
     @Override
     public ObservableList<Supplier> getAllSupplier() {
-        return null;
+        ObservableList<Supplier> getallitem = FXCollections.observableArrayList();
+        try {
+            String sql="select * from supplier";
+            Connection connection = DbConnection.getInstance().getConnection();
+            PreparedStatement psTm = connection.prepareStatement(sql);
+            ResultSet resultSet = psTm.executeQuery();
+
+            while (resultSet.next()){
+                Supplier supplier = new Supplier(
+                        resultSet.getString("SupplierId"),
+                        resultSet.getString("SupplierName"),
+                        resultSet.getString("SupplierTitel"),
+                        resultSet.getString("contact"),
+                        resultSet.getString("company"),
+                        resultSet.getString("mail"),
+                        resultSet.getString("ItemName")
+
+                );
+                getallitem.add(supplier);
+                System.out.println("item = " + supplier);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return getallitem;
+
     }
 
     @Override

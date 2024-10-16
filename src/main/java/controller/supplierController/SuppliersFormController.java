@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Supplier;
 
 import java.net.URL;
@@ -44,7 +45,7 @@ public class SuppliersFormController implements Initializable {
     private Label lblSupplierId;
 
     @FXML
-    private TableView<?> tblSupplier;
+    private TableView  tblSupplier;
 
     @FXML
     private TextField txtCompany;
@@ -64,6 +65,14 @@ public class SuppliersFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         id();
+        reloard();
+
+        colSupId.setCellValueFactory(new PropertyValueFactory<>("supid"));
+        colCompany.setCellValueFactory(new PropertyValueFactory<>("company"));
+        colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        colMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
+        colTitle.setCellValueFactory(new PropertyValueFactory<>("titel"));
+
 
         ObservableList<String> title = FXCollections.observableArrayList();
         title.add("Mr.");
@@ -72,12 +81,25 @@ public class SuppliersFormController implements Initializable {
 
         cmdTitel.setItems(title);
 
+        tblSupplier.getSelectionModel().selectedItemProperty().addListener((observableValue, o, newval) -> {
+            if(newval!=null){
+                addToText((Supplier) newval);
+            }
+        });
 
     }
 
+    private void addToText(Supplier newval) {
+        txtId.setText(newval.getSupid());
+        txtContact.setText(newval.getContact());
+        txtmail.setText(newval.getMail());
+        cmdTitel.setValue(newval.getTitel());
+        txtName.setText(newval.getSupname());
+        txtCompany.setText(newval.getCompany());
+    }
 
 
-    SupplierService service=new SupplierController();
+    SupplierService service =new SupplierController();
 
     @FXML
     void btnAddOnaction(ActionEvent event) {
@@ -93,11 +115,9 @@ public class SuppliersFormController implements Initializable {
 
         if (service.addSupplier(supplier)){
             new Alert(Alert.AlertType.CONFIRMATION,"Done").show();
+            reloard();
             id();
         }
-
-
-
     }
 
     @FXML
@@ -108,6 +128,12 @@ public class SuppliersFormController implements Initializable {
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
 
+    }
+
+    private void reloard(){
+
+        ObservableList<Supplier> allSupplier = service.getAllSupplier();
+        tblSupplier.setItems(allSupplier);
     }
 
     //-----------------------id------------------------------------------------------------------
