@@ -2,6 +2,7 @@ package controller.itemController;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import controller.supplierController.SupplierController;
 import db.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Item;
+import model.Supplier;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +28,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.EventObject;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddItemFormController implements Initializable {
@@ -91,6 +94,7 @@ public class AddItemFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setSupplierId();
         reloard();
         id();
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
@@ -112,10 +116,24 @@ public class AddItemFormController implements Initializable {
         catagory.add("Ladies");
         catagory.add("Gents");
         catagory.add("Kids");
-
-
-
         lblcategorie.setItems(catagory);
+
+
+        cmdSupplierId.getSelectionModel().selectedItemProperty().addListener((observableValue, s, t1) -> {
+            if (t1!=null){
+                searsupplierid(t1);
+                System.out.println("val"+t1);
+            }
+        });
+
+    }
+
+    private void searsupplierid(String id) {
+        System.out.println("id = " + id);
+        Supplier supplier = SupplierController.getInstance().SearchSupplier( id);
+        lblSupplierName.setText(supplier.getSupname());
+       // System.out.println("Checking nulls: supplierID = " + supplier + ", itemCode = " + supplier.getSupname());
+
     }
 
     private void addValueTotext(Item newval) {
@@ -212,7 +230,17 @@ public class AddItemFormController implements Initializable {
         lblSize.clear();
         lblcategorie.setValue(null);
     }
+//******
+    public void setSupplierId(){
+        List<String> suplierId = SupplierController.getInstance().getallSuplierId();
+        ObservableList<String> observableList = FXCollections.observableArrayList();
 
+        for (String id : suplierId) {
+            observableList.add(id);
+        }
+        cmdSupplierId.setItems(observableList);
+    }
+//======================================================================================================
     private String getlatesitemid() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         Statement statement = connection.createStatement();

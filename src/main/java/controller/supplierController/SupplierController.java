@@ -1,5 +1,6 @@
 package controller.supplierController;
 
+import controller.util.CrudUtil;
 import db.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SupplierController implements SupplierService{
 
@@ -109,5 +112,38 @@ public class SupplierController implements SupplierService{
             throw new RuntimeException(e);
         }
         return isdelete;
+    }
+
+
+    public List<String> getallSuplierId(){
+        ObservableList<Supplier> allSupplier = getAllSupplier();
+        ArrayList<String> supplierid = new ArrayList<>();
+        allSupplier.forEach(id -> {
+            supplierid.add(id.getSupid());
+        });
+        return supplierid;
+    }
+
+    public  Supplier SearchSupplier(String id){
+        try {
+            ResultSet resultSet = CrudUtil.execute("select * from supplier where SupplierId=?", id);
+
+            while (resultSet.next()){
+               return new Supplier(
+                        resultSet.getString("SupplierId"),
+                        resultSet.getString("SupplierName"),
+                        resultSet.getString("SupplierTitel"),
+                        resultSet.getString("contact"),
+                        resultSet.getString("company"),
+                        resultSet.getString("mail"),
+                        resultSet.getString("ItemName")
+
+                        );
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 }
