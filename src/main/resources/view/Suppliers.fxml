@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="864.0" prefWidth="1045.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.supplierController.SuppliersController">
+   <children>
+      <ImageView fitHeight="864.0" fitWidth="1090.0" layoutX="-45.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assert/201576392-fast-fashion-store-with-shelves-full-of-clothing-in-various-styles-and-colors-created-with.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="100.0" arcWidth="150.0" height="742.0" layoutX="35.0" layoutY="85.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" width="965.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#222323" height="53.0" layoutX="91.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
+      <Text fill="#faf4f4" layoutX="146.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suppliers">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Label layoutX="115.0" layoutY="152.0" prefHeight="28.0" prefWidth="135.0" text="Supplier Id " textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label contentDisplay="CENTER" layoutX="115.0" layoutY="244.0" prefHeight="28.0" prefWidth="135.0" text="Item" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" layoutX="382.0" layoutY="194.0" prefHeight="32.0" prefWidth="155.0" promptText="Name" />
+      <ComboBox fx:id="cmdTitel" layoutX="263.0" layoutY="194.0" prefHeight="32.0" prefWidth="116.0" promptText="Titel" />
+      <Label layoutX="115.0" layoutY="290.0" prefHeight="28.0" prefWidth="135.0" text="Contact" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtContact" layoutX="263.0" layoutY="292.0" prefHeight="32.0" prefWidth="274.0" promptText="Uppliers id" />
+      <TextField fx:id="txtCompany" layoutX="264.0" layoutY="337.0" prefHeight="32.0" prefWidth="274.0" promptText="Company name" />
+      <Label layoutX="115.0" layoutY="339.0" prefHeight="28.0" prefWidth="135.0" text="Company" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtmail" layoutX="264.0" layoutY="385.0" prefHeight="32.0" prefWidth="274.0" promptText="mail" />
+      <Label layoutX="115.0" layoutY="385.0" prefHeight="28.0" prefWidth="135.0" text="E mail" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Separator disable="true" layoutX="593.0" layoutY="166.0" orientation="VERTICAL" prefHeight="275.0" prefWidth="14.0" />
+      <TableView layoutX="642.0" layoutY="190.0" prefHeight="223.0" prefWidth="325.0">
+        <columns>
+          <TableColumn prefWidth="112.00006103515625" text="Item Code" />
+          <TableColumn prefWidth="108.7999267578125" text="Item Name" />
+            <TableColumn prefWidth="108.7999267578125" text="Qty" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tblSupplier" layoutX="125.0" layoutY="513.0" prefHeight="275.0" prefWidth="734.0">
+         <columns>
+            <TableColumn fx:id="colSupId" prefWidth="150.39999389648438" text="Supplier Id " />
+            <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
+            <TableColumn fx:id="colTitle" prefWidth="104.0" text="Titel" />
+            <TableColumn fx:id="colContact" prefWidth="154.39996337890625" text="Contact" />
+            <TableColumn fx:id="colCompany" prefWidth="159.99993896484375" text="Company" />
+            <TableColumn fx:id="colMail" prefWidth="161.60009765625" text="E mail" />
+            <TableColumn prefWidth="174.4000244140625" />
+         </columns>
+      </TableView>
+      <Label fx:id="lblSupplierId" layoutX="263.0" layoutY="150.0" prefHeight="32.0" prefWidth="274.0" style="-fx-background-color: #FBFBFB;" text="Supplier Id " textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="264.0" layoutY="451.0" onAction="#btnAddOnaction" prefHeight="32.0" prefWidth="77.0" ripplerFill="#fcfffd" style="-fx-background-color: #10B557;" text="Add" textFill="#f7f1f1" />
+      <JFXButton layoutX="349.0" layoutY="451.0" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="88.0" ripplerFill="#fcfffd" style="-fx-background-color: #B59E10;" text="Update" textFill="#f7f1f1" />
+      <JFXButton layoutX="444.0" layoutY="451.0" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="94.0" ripplerFill="#fcfffd" style="-fx-background-color: #B51010;" text="Dlete" textFill="#f7f1f1" />
+      <TextField fx:id="txtItem" layoutX="264.0" layoutY="242.0" prefHeight="32.0" prefWidth="274.0" promptText="Name" text="Itm" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="115.0" layoutY="195.0" prefHeight="28.0" prefWidth="135.0" text="Supplier Name" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmdTitel1" layoutX="677.0" layoutY="134.0" prefHeight="32.0" prefWidth="238.0" promptText="Supplier Ids" />
+   </children>
+</AnchorPane>

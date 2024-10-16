@@ -77,7 +77,12 @@ public class Dashboard implements Initializable {
     public void btnOrderDetailsnOnAction(ActionEvent actionEvent) {
     }
 
-    public void btnSupplierOnAction(ActionEvent actionEvent) {
+    public void btnSupplierOnAction(ActionEvent actionEvent) throws IOException {
+        parent= FXMLLoader.load(getClass().getResource("../view/Suppliers.fxml"));
+        stage= (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
