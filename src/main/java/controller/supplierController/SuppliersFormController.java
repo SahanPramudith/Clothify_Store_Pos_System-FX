@@ -116,24 +116,56 @@ public class SuppliersFormController implements Initializable {
         if (service.addSupplier(supplier)){
             new Alert(Alert.AlertType.CONFIRMATION,"Done").show();
             reloard();
+            clear();
             id();
         }
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
+        if (service.delete(txtId.getText())){
+            new Alert(Alert.AlertType.INFORMATION,"deleted").show();
+            reloard();
+            clear();
+            id();
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        Supplier supplier = new Supplier(
+                txtId.getText(),
+                txtName.getText(),
+                cmdTitel.getValue(),
+                txtContact.getText(),
+                txtCompany.getText(),
+                txtmail.getText(),
+                txtItem.getText()
+        );
 
+        if (service.update(supplier)){
+            new Alert(Alert.AlertType.CONFIRMATION,"Update").show();
+            reloard();
+            clear();
+            id();
+
+        }
     }
 
     private void reloard(){
 
         ObservableList<Supplier> allSupplier = service.getAllSupplier();
         tblSupplier.setItems(allSupplier);
+    }
+
+    private void clear(){
+        txtId.clear();
+        txtCompany.clear();
+        txtName.clear();
+        txtmail.clear();
+        txtItem.clear();
+        txtContact.clear();
+        cmdTitel.setValue(null);
     }
 
     //-----------------------id------------------------------------------------------------------

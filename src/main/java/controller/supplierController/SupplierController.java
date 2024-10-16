@@ -40,7 +40,26 @@ public class SupplierController implements SupplierService{
 
     @Override
     public boolean update(Supplier supplier) {
-        return false;
+        boolean isupdate;
+        try {
+            String sql="Update supplier set SupplierName=?,SupplierTitel=?,contact=?,company=?,mail=?,ItemName=? where SupplierId=? ";
+            Connection connection = DbConnection.getInstance().getConnection();
+            PreparedStatement psTm = connection.prepareStatement(sql);
+            psTm.setObject(1,supplier.getSupname());
+            psTm.setObject(2,supplier.getTitel());
+            psTm.setObject(3,supplier.getContact());
+            psTm.setObject(4,supplier.getCompany());
+            psTm.setObject(5,supplier.getMail());
+            psTm.setObject(6,supplier.getItemname());
+            psTm.setObject(7,supplier.getSupid());
+
+
+            isupdate = psTm.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return isupdate;
+
     }
 
     @Override
@@ -74,7 +93,14 @@ public class SupplierController implements SupplierService{
     }
 
     @Override
-    public boolean delete(String text) {
-        return false;
+    public boolean delete(String id) {
+        boolean isdelete;
+        try {
+            String sql="delete form supplier where SupplierId=?"+id;
+            isdelete = DbConnection.getInstance().getConnection().createStatement().executeUpdate("delete from supplier where SupplierId='"+ id + "'") > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return isdelete;
     }
 }
