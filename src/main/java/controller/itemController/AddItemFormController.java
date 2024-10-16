@@ -128,7 +128,7 @@ public class AddItemFormController implements Initializable {
 
     }
 
-    ItemService service=new ItemController();
+    ItemService service=ItemController.getInstance() ;
     @FXML
     void btnAddOnAction(ActionEvent event) {
 
