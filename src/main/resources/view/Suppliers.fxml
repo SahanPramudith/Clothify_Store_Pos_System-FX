@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="864.0" prefWidth="1045.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.supplierController.SuppliersController">
+<AnchorPane prefHeight="864.0" prefWidth="1045.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.supplierController.SuppliersFormController">
    <children>
       <ImageView fitHeight="864.0" fitWidth="1090.0" layoutX="-45.0" pickOnBounds="true">
          <image>
@@ -77,11 +77,6 @@
             <TableColumn prefWidth="174.4000244140625" />
          </columns>
       </TableView>
-      <Label fx:id="lblSupplierId" layoutX="263.0" layoutY="150.0" prefHeight="32.0" prefWidth="274.0" style="-fx-background-color: #FBFBFB;" text="Supplier Id " textFill="#fffbfb">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
       <JFXButton layoutX="264.0" layoutY="451.0" onAction="#btnAddOnaction" prefHeight="32.0" prefWidth="77.0" ripplerFill="#fcfffd" style="-fx-background-color: #10B557;" text="Add" textFill="#f7f1f1" />
       <JFXButton layoutX="349.0" layoutY="451.0" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="88.0" ripplerFill="#fcfffd" style="-fx-background-color: #B59E10;" text="Update" textFill="#f7f1f1" />
       <JFXButton layoutX="444.0" layoutY="451.0" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="94.0" ripplerFill="#fcfffd" style="-fx-background-color: #B51010;" text="Dlete" textFill="#f7f1f1" />
@@ -92,5 +87,6 @@
          </font>
       </Label>
       <ComboBox fx:id="cmdTitel1" layoutX="677.0" layoutY="134.0" prefHeight="32.0" prefWidth="238.0" promptText="Supplier Ids" />
+      <TextField fx:id="txtId" layoutX="264.0" layoutY="150.0" prefHeight="32.0" prefWidth="274.0" />
    </children>
 </AnchorPane>
