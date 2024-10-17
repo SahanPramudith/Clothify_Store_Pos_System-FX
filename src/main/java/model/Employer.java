@@ -10,6 +10,7 @@ import lombok.*;
 public class Employer {
 
     private String empid;
+    private String titel;
     private String name;
     private String address;
     private String company;
