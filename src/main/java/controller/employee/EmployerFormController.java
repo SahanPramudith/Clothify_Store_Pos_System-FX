@@ -84,6 +84,21 @@ public class EmployerFormController implements Initializable {
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colCompany.setCellValueFactory(new PropertyValueFactory<>("company"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("mail"));
+
+        tblEmp.getSelectionModel().selectedItemProperty().addListener((observableValue, employer, t1) -> {
+            if (t1!=null){
+                setToTable(t1);
+            }
+        });
+    }
+
+    private void setToTable(Employer t1) {
+        txtName.setText(t1.getName());
+        txtCompany.setText(t1.getCompany());
+        txtAddress.setText(t1.getAddress());
+        txtMail.setText(t1.getMail());
+        txtEmpId.setText(t1.getEmpid());
+        cmdTitel.setValue(t1.getTitel());
     }
 
 
