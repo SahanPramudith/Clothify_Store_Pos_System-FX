@@ -132,6 +132,7 @@ public class AddItemFormController implements Initializable {
         System.out.println("id = " + id);
         Supplier supplier = SupplierController.getInstance().SearchSupplier( id);
         lblSupplierName.setText(supplier.getSupname());
+
        // System.out.println("Checking nulls: supplierID = " + supplier + ", itemCode = " + supplier.getSupname());
 
     }
@@ -244,7 +245,7 @@ public class AddItemFormController implements Initializable {
     private String getlatesitemid() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT itemCode FROM item ORDER BY itemCode DESC LIMIT 1");
+        ResultSet resultSet = statement.executeQuery("SELECT itemCode FROM items ORDER BY itemCode DESC LIMIT 1");
         String itemCode = resultSet.next() ? resultSet.getString("ItemCode") : null;
         System.out.println("Fetched Item Code from DB: " + itemCode); // Print the fetched item code
         return itemCode;

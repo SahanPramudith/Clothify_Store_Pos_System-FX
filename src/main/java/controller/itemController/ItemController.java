@@ -1,5 +1,6 @@
 package controller.itemController;
 
+import controller.util.CrudUtil;
 import db.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemController implements ItemService{
 
@@ -27,7 +30,7 @@ public class ItemController implements ItemService{
 
         boolean isAdd;
         try {
-            String sql="Insert Into item values (?,?,?,?,?,?,?,?,?)";
+            String sql="Insert Into items values (?,?,?,?,?,?,?,?,?)";
             Connection connection = DbConnection.getInstance().getConnection();
             PreparedStatement psTm = connection.prepareStatement(sql);
             psTm.setObject(1,item.getItemcode());
@@ -53,7 +56,7 @@ public class ItemController implements ItemService{
 
         boolean isupdate;
         try {
-            String sql="Update item set SupplierId=?,ItemName=?,Supplier=?,Size=?,categorie=?,BynigPrice=?,SellingPrice=?,Qty=? where ItemCode=? ";
+            String sql="Update items set SupplierId=?,ItemName=?,Supplier=?,Size=?,categorie=?,BynigPrice=?,SellingPrice=?,Qty=? where ItemCode=? ";
             Connection connection = DbConnection.getInstance().getConnection();
             PreparedStatement psTm = connection.prepareStatement(sql);
             psTm.setObject(1,item.getSpplierid());
@@ -79,7 +82,7 @@ public class ItemController implements ItemService{
         ObservableList<Item> getallitem = FXCollections.observableArrayList();
 
         try {
-            String sql="select * from item";
+            String sql="select * from items";
             Connection connection = DbConnection.getInstance().getConnection();
             PreparedStatement psTm = connection.prepareStatement(sql);
             ResultSet resultSet = psTm.executeQuery();
@@ -112,10 +115,86 @@ public class ItemController implements ItemService{
         boolean isdelete;
         try {
             String sql="delete form item where ItemCode=?"+id;
-            isdelete = DbConnection.getInstance().getConnection().createStatement().executeUpdate("delete from item where ItemCode='" + id + "'") > 0;
+            isdelete = DbConnection.getInstance().getConnection().createStatement().executeUpdate("delete from items where ItemCode='" + id + "'") > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return isdelete;
     }
+//
+//    @Override
+//    public Item search(String id) {
+//        try {
+//            ResultSet resultSet = CrudUtil.execute("select * from items where ItemCode=?", id);
+//            while (resultSet.next()){
+//                if (!resultSet.next()) {
+//                    System.out.println("No data found for ID: " + id);
+//                }
+//                return new Item(
+//                        resultSet.getString("ItemCode"),
+//                        resultSet.getString("SupplierId"),
+//                        resultSet.getString("ItemName"),
+//                        resultSet.getString("Supplier"),
+//                        resultSet.getString("Size"),
+//                        resultSet.getString("categorie"),
+//                        resultSet.getDouble("BynigPrice"),
+//                        resultSet.getDouble("SellingPrice"),
+//                        resultSet.getInt("Qty")
+//                );
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return null;
+//    }
+//
+//
+//
+//    @Override
+//    public List<String> getsuppid() {
+//        ObservableList<Item> allItem = getAllItem();
+//        System.out.println("allItemform = " + allItem);
+//
+//        ArrayList<String> itemcode = new ArrayList<>();
+//
+//        allItem.forEach(code->{
+//            itemcode.add(code.getSpplierid());
+//        });
+//        System.out.println("itemformcode = " + itemcode);
+//        return itemcode;
+//    }
+//
+//
+//    public ObservableList<Item>setsupid(String id ){
+//        ObservableList<Item> getallitem = FXCollections.observableArrayList();
+//
+//        try {
+//            String sql="select * from items";
+//            Connection connection = DbConnection.getInstance().getConnection();
+//            PreparedStatement psTm = connection.prepareStatement("select * from items where ItemCode='" + id + "'");
+//            ResultSet resultSet = psTm.executeQuery();
+//
+//            while (resultSet.next()){
+//                Item item = new Item(
+//                        resultSet.getString("ItemCode"),
+//                        resultSet.getString("SupplierId"),
+//                        resultSet.getString("ItemName"),
+//                        resultSet.getString("Supplier"),
+//                        resultSet.getString("Size"),
+//                        resultSet.getString("categorie"),
+//                        resultSet.getDouble("BynigPrice"),
+//                        resultSet.getDouble("SellingPrice"),
+//                        resultSet.getInt("Qty")
+//
+//                );
+//                getallitem.add(item);
+//                System.out.println("item = " + item);
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        System.out.println("getallitems = " + getallitem);
+//        return getallitem;
+//    }
+
 }

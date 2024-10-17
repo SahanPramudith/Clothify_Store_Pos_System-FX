@@ -5,6 +5,7 @@ import model.Item;
 import model.Supplier;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface SupplierService {
     boolean addSupplier(Supplier supplier);
@@ -14,4 +15,6 @@ public interface SupplierService {
     ObservableList<Supplier > getAllSupplier();
 
     boolean delete(String text);
+    Supplier SearchSupplier(String id);
+    List<String> getallSuplierId();
 }

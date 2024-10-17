@@ -137,8 +137,7 @@ public class SupplierController implements SupplierService{
                         resultSet.getString("company"),
                         resultSet.getString("mail"),
                         resultSet.getString("ItemName")
-
-                        );
+               );
             }
 
         } catch (SQLException e) {
@@ -146,4 +145,6 @@ public class SupplierController implements SupplierService{
         }
         return null;
     }
+
+
 }

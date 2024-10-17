@@ -59,11 +59,11 @@
          </font>
       </Label>
       <Separator disable="true" layoutX="593.0" layoutY="166.0" orientation="VERTICAL" prefHeight="275.0" prefWidth="14.0" />
-      <TableView layoutX="642.0" layoutY="190.0" prefHeight="223.0" prefWidth="325.0">
+      <TableView fx:id="tblItem" layoutX="641.0" layoutY="188.0" prefHeight="223.0" prefWidth="325.0">
         <columns>
-          <TableColumn prefWidth="112.00006103515625" text="Item Code" />
-          <TableColumn prefWidth="108.7999267578125" text="Item Name" />
-            <TableColumn prefWidth="108.7999267578125" text="Qty" />
+          <TableColumn fx:id="colItemCode" prefWidth="112.00006103515625" text="Item Code" />
+          <TableColumn fx:id="colItemName" prefWidth="108.7999267578125" text="Item Name" />
+            <TableColumn fx:id="colQty" prefWidth="108.7999267578125" text="Qty" />
         </columns>
       </TableView>
       <TableView fx:id="tblSupplier" layoutX="125.0" layoutY="513.0" prefHeight="275.0" prefWidth="734.0">
@@ -86,7 +86,7 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmdTitel1" layoutX="677.0" layoutY="134.0" prefHeight="32.0" prefWidth="238.0" promptText="Supplier Ids" />
+      <ComboBox fx:id="cmdSuppid" layoutX="677.0" layoutY="134.0" prefHeight="32.0" prefWidth="238.0" />
       <TextField fx:id="txtId" layoutX="264.0" layoutY="150.0" prefHeight="32.0" prefWidth="274.0" />
    </children>
 </AnchorPane>
