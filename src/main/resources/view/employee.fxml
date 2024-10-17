@@ -65,10 +65,16 @@
             <TableColumn fx:id="colEmail" prefWidth="132.7999267578125" text="E mail" />
         </columns>
       </TableView>
+      <Button layoutX="722.0" layoutY="19.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="40.0" prefWidth="130.0" text="Back" />
       <Text fill="#efe9e9" layoutX="338.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer " wrappingWidth="289.60000000000014">
          <font>
             <Font name="Britannic Bold" size="30.0" />
          </font>
       </Text>
+      <ImageView fitHeight="32.0" fitWidth="51.0" layoutX="729.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assert/icons8-return-50.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

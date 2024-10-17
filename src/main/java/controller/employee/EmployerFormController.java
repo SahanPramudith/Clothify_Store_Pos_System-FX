@@ -6,19 +6,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.Employer;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.EventObject;
 import java.util.ResourceBundle;
 
 
@@ -66,9 +73,13 @@ public class EmployerFormController implements Initializable {
 
     EmployerService service=new EmployerController();
 
-
+    private Parent parent;
+    private Stage stage;
+    private EventObject actionEvent;
+    private Scene scene;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         reloard();
         id();
 
@@ -202,5 +213,16 @@ public class EmployerFormController implements Initializable {
     }
 
 
+    public void btnBackOnAction(ActionEvent actionEvent) {
+        try {
+            parent = FXMLLoader.load(getClass().getResource("../../view/dashboard.fxml"));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(parent);
 
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
