@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Employer;
 
 import java.net.URL;
@@ -46,7 +47,7 @@ public class EmployerFormController implements Initializable {
     private TableColumn<?, ?> colTitle;
 
     @FXML
-    private TableView<?> tblEmp;
+    private TableView<Employer> tblEmp;
 
     @FXML
     private JFXTextField txtAddress;
@@ -68,12 +69,21 @@ public class EmployerFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        reloard();
         id();
+
         ObservableList<String> titel = FXCollections.observableArrayList();
         titel.add("Mr.");
         titel.add("Ms.");
         titel.add("Mss.");
         cmdTitel.setItems(titel);
+
+        colEmpId.setCellValueFactory(new PropertyValueFactory<>("empid"));
+        colTitle.setCellValueFactory(new PropertyValueFactory<>("titel"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colCompany.setCellValueFactory(new PropertyValueFactory<>("company"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("mail"));
     }
 
 
@@ -103,6 +113,14 @@ public class EmployerFormController implements Initializable {
     void btnUpdateOnAction(ActionEvent event) {
 
     }
+
+    void reloard(){
+        ObservableList<Employer> getall = service.getall();
+        System.out.println("getall = " + getall);
+        tblEmp.setItems(getall);
+    }
+
+
 
 
     //-----------------------id------------------------------------------------------------------

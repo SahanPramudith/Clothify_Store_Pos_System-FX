@@ -1,10 +1,13 @@
 package controller.employee;
 
 import db.DbConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Employer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EmployerController implements EmployerService{
@@ -28,5 +31,35 @@ public class EmployerController implements EmployerService{
             throw new RuntimeException(e);
         }
         return isAdd;
+    }
+
+    @Override
+    public ObservableList<Employer> getall() {
+
+        ObservableList<Employer> getallEployers = FXCollections.observableArrayList();
+
+        try {
+            String sql="select * from emploer";
+            Connection connection = DbConnection.getInstance().getConnection();
+            PreparedStatement psTm = connection.prepareStatement(sql);
+            ResultSet resultSet = psTm.executeQuery();
+
+            while (resultSet.next()){
+                Employer employer = new Employer(
+                        resultSet.getString("EpmploerId"),
+                        resultSet.getString("EmpTitle"),
+                        resultSet.getString("EmpName"),
+                        resultSet.getString("EmpAddress"),
+                        resultSet.getString("EmpCompany"),
+                        resultSet.getString("EmpMail")
+                );
+
+                getallEployers.add(employer);
+                System.out.println("employer = " + employer);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return getallEployers;
     }
 }
