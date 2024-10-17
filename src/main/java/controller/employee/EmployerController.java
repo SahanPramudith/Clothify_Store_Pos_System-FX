@@ -62,4 +62,41 @@ public class EmployerController implements EmployerService{
         }
         return getallEployers;
     }
+
+    @Override
+    public boolean update(Employer employer) {
+        boolean isupdate;
+        try {
+            String sql="Update emploer set EmpTitle=?,EmpName=?,EmpAddress=?,EmpCompany=?,EmpMail=? where EpmploerId=? ";
+            Connection connection = DbConnection.getInstance().getConnection();
+            PreparedStatement psTm = connection.prepareStatement(sql);
+            psTm.setObject(1,employer.getTitel());
+            psTm.setObject(2,employer.getName());
+            psTm.setObject(3,employer.getAddress());
+            psTm.setObject(4,employer.getCompany());
+            psTm.setObject(5,employer.getMail());
+            psTm.setObject(6,employer.getEmpid());
+
+            isupdate = psTm.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("isupdate = " + isupdate);
+        return isupdate;
+
+    }
+
+    @Override
+    public boolean delete(String id) {
+        boolean isdelete;
+        try {
+            //String sql="delete form item where ItemCode=?"+id;
+            isdelete = DbConnection.getInstance().getConnection().createStatement().executeUpdate("delete from emploer where EpmploerId='" + id + "'") > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("isdelete = " + isdelete);
+        return isdelete;
+
+    }
 }

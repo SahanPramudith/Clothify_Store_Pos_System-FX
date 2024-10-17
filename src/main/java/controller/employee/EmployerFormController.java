@@ -107,8 +107,8 @@ public class EmployerFormController implements Initializable {
         Employer employer = new Employer(
                 txtEmpId.getText(),
                 cmdTitel.getValue(),
+                txtName.getText(),
                 txtAddress.getText(),
-                txtCompany.getText(),
                 txtCompany.getText(),
                 txtMail.getText()
 
@@ -123,11 +123,31 @@ public class EmployerFormController implements Initializable {
 
     @FXML
     void btnDeletOnAction(ActionEvent event) {
+        if (service.delete(txtEmpId.getText())){
+            new Alert(Alert.AlertType.WARNING).show();
+            reloard();
+            clear();
+        }
 
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        Employer employer = new Employer(
+                txtEmpId.getText(),
+                cmdTitel.getValue(),
+                txtAddress.getText(),
+                txtCompany.getText(),
+                txtCompany.getText(),
+                txtMail.getText()
+        );
+
+        if (service.update(employer)){
+            new Alert(Alert.AlertType.CONFIRMATION).show();
+            reloard();
+            //clear();
+        }
+
 
     }
 
