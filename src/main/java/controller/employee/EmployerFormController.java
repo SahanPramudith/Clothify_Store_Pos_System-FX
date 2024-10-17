@@ -100,6 +100,8 @@ public class EmployerFormController implements Initializable {
         );
         if (service.add(employer)){
             new Alert(Alert.AlertType.CONFIRMATION).show();
+            reloard();
+            clear();
         }
 
     }
@@ -118,6 +120,17 @@ public class EmployerFormController implements Initializable {
         ObservableList<Employer> getall = service.getall();
         System.out.println("getall = " + getall);
         tblEmp.setItems(getall);
+        clear();
+    }
+
+    private void clear(){
+        txtEmpId.clear();
+        txtMail.clear();
+        txtAddress.clear();
+        txtName.clear();
+        txtCompany.clear();
+        cmdTitel.setValue("");
+
     }
 
 
